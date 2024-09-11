@@ -3,7 +3,7 @@ import { Outlet } from 'react-router-dom'
 
 function App() {
   return (
-    <div className="d-flex flex-column vh-100">
+    <div className="d-flex flex-column flex-wrap">
       <header>
         <Navbar bg="dark" variant="dark" expand="lg">
           <Container>
