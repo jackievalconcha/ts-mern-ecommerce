@@ -1,4 +1,6 @@
-import { Product } from '../../frontend/src/types/Product'
+import bcrypt from 'bcryptjs'
+import { User } from './models/userModel'
+import { Product } from './models/productModel'
 
 export const sampleProducts: Product[] = [
   {
@@ -197,5 +199,20 @@ export const sampleProducts: Product[] = [
       'A great appetite stimulator which guarantees exceptional palatability and long term preference.',
     rating: 4.5,
     numberReviews: 49,
+  },
+]
+
+export const sampleUsers: User[] = [
+  {
+    name: 'Joe',
+    email: 'admin@example.com',
+    password: bcrypt.hashSync('123456'),
+    isAdmin: true,
+  },
+  {
+    name: 'John',
+    email: 'user@example.com',
+    password: bcrypt.hashSync('123456'),
+    isAdmin: false,
   },
 ]
