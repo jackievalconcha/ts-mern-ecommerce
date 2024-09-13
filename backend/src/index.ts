@@ -13,14 +13,6 @@ dotenv.config()
 const MONGODB_URI =
   process.env.MONGODB_URI || 'mongodb://localhost/ts-mern-ecommerce_db'
 mongoose.set('strictQuery', true)
-mongoose
-  .connect(MONGODB_URI)
-  .then(() => {
-    console.log('connected to mongodb')
-  })
-  .catch(() => {
-    console.log('error mongodb')
-  })
 
 const app = express()
 app.use(
@@ -40,6 +32,15 @@ app.use('/api/seed', seedRouter)
 app.use('/api/keys', keyRouter)
 
 const PORT = 5000
-app.listen(PORT, () => {
-  console.log(`server started at http://localhost:${PORT}`)
-})
+
+mongoose
+  .connect(MONGODB_URI)
+  .then(() => {
+    app.listen(PORT, () => {
+      console.log(`server started at http://localhost:${PORT}`)
+    })
+    console.log('connected to mongodb')
+  })
+  .catch(() => {
+    console.log('error mongodb')
+  })
